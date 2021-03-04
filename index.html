@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XLT Helper</title>
+  <!-- 개발버전, 도움되는 콘솔 경고를 포함. -->
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!-- Load required Bootstrap and BootstrapVue CSS -->
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+<!-- Load polyfills to support older browsers -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+
+<!-- Load Vue followed by BootstrapVue -->
+<script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+<!-- Load the following for BootstrapVueIcons support -->
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+
+
+
+<!-- 상용버전, 속도와 용량이 최적화됨. -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+  <div id="app">
+    <div>
+      <input type="radio" value="ko" v-model="languagePicker">
+      <label for="ko">ko</label>
+      <br>
+      <input type="radio" value="en" v-model="languagePicker">
+      <label for="en">en</label>
+      <br>
+      <input type="radio" value="jp" v-model="languagePicker">
+      <label for="jp">jp</label>
+    </div>
+    <textarea v-model="message"></textarea>
+    <div>
+    {{editViewData}}
+    </div>
+    <div>
+      <b-button @click="refresh">Toggle Busy State</b-button>
+
+      <b-table sticky-header :busy="isBusy" :fields="editViewField" :items="editViewData" >
+        <template #table-busy>
+        <div class="text-center text-danger my-2">
+          <b-spinner class="align-middle"></b-spinner>
+          <strong>Loading...</strong>
+        </div>
+      </template>
+
+      </b-table>
+    </div>
+  </div>
+
+  <script src="./index.js"></script> 
+</body>
+</html>

@@ -3,7 +3,8 @@ var myApp = new Vue({
   data: {
     isBusy: false,
     languagePicker: 'ko',
-    message: '{"a": "b"}',
+    message: '',
+    // message: '{"a": "b"}',
     editViewField: ['key', 'ko', 'en', 'jp'],
     editViewData: []
   },
